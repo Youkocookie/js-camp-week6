@@ -61,15 +61,15 @@ async function getCart() {
 	// 4. 失敗回傳 { success: false, error: '錯誤訊息' }
 	async function getProductsSafe() {
 	try {
-		const response = await fetch(`${BASE_URL}/api/livejs/v1/customer/${API_PATH}/products`);
-		if (!response.ok) {
-			throw new Error(`HTTP error! status: ${response.status}`);
-		}
-		const data = await response.json();
-		return { success: true, data: data.products };
-	} catch (error) {
-		return { success: false, error: error.message };
-	}
+        const response = await fetch(`${BASE_URL}/api/livejs/v1/customer/${API_PATH}/products`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        return { success: true, data: data.products };
+    } catch (error) {
+        return { success: false, error: error.message };
+    }
 }
 
 // ========================================
@@ -164,19 +164,15 @@ async function removeCartItem(cartId) {
  * @returns {Promise<Object>} - 回傳清空後的購物車資料
  */
 async function clearCart() {
-	async function clearCart() {
-	const response = await fetch(`${BASE_URL}/api/livejs/v1/customer/${API_PATH}/carts`, {
-		method: "DELETE",
-		headers: {
-			"Content-Type": "application/json",
-			Authorization: ADMIN_TOKEN,
-		},
-	});
-	const data = await response.json();
-	return data;
-}
-	// 請實作此函式
-	// 提示：發送 DELETE 請求到 /carts
+    const response = await fetch(`${BASE_URL}/api/livejs/v1/customer/${API_PATH}/carts`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: ADMIN_TOKEN,
+        },
+    });
+    const data = await response.json();
+    return data;
 }
 
 // ========================================
